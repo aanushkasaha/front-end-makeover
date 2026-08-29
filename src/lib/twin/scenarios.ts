@@ -155,7 +155,7 @@ function buildThroughputSeries(events: SimLogEvent[], horizon: number): Throughp
 }
 
 export function runScenario(scenarioId: ScenarioId): ScenarioResult {
-  const scenario = SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0];
+  const scenario = SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0]!;
 
   const sim = new AssemblyLineSimulation(42);
   const lookaheadEngine = new LookaheadShadowTwin(2700.0);

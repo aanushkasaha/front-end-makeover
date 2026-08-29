@@ -146,11 +146,11 @@ export class AssemblyLineSimulation {
   }
 
   private *stationProcess(idx: number): Generator<SimEvent, void, unknown> {
-    const stCfg = this.stationsConfig[idx];
+    const stCfg = this.stationsConfig[idx]!;
     const stId = stCfg.id;
     const isFirst = idx === 0;
     const isLast = idx === this.stationsConfig.length - 1;
-    const inBuffer = isFirst ? this.entryQueue : this.buffers[`B${idx}`];
+    const inBuffer = isFirst ? this.entryQueue : this.buffers[`B${idx}`]!;
     const outBuffer = isLast ? null : this.buffers[`B${idx + 1}`];
 
     for (;;) {

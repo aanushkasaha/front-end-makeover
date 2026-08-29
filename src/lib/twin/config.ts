@@ -21,14 +21,14 @@ export const LINE_CONFIG: LineConfig = {
   conveyor_transit_time_seconds: 10.0,
   max_buffer_capacity: 2,
   stations: [
-    { id: "S1", name: "Body Framing", base_cycle_time: 60.0, variance_std: 3.0, dark: false },
-    { id: "S2", name: "Powertrain Drop", base_cycle_time: 60.0, variance_std: 3.5, dark: false },
-    { id: "S3", name: "Interior Wiring Harness", base_cycle_time: 62.0, variance_std: 5.0, dark: true },
-    { id: "S4", name: "Chassis Marriage", base_cycle_time: 60.0, variance_std: 3.0, dark: false },
-    { id: "S5", name: "Trim & Finish", base_cycle_time: 61.0, variance_std: 5.0, dark: true },
-    { id: "S6", name: "Glazing & Seals", base_cycle_time: 60.0, variance_std: 3.0, dark: false },
-    { id: "S7", name: "Fluid Fill & Electrical", base_cycle_time: 59.0, variance_std: 3.0, dark: false },
-    { id: "S8", name: "End-of-Line Test", base_cycle_time: 60.0, variance_std: 4.0, dark: false },
+    { id: "S1", name: "Body Framing", base_cycle_time: 56.0, variance_std: 2.5, dark: false },
+    { id: "S2", name: "Powertrain Drop", base_cycle_time: 56.5, variance_std: 2.8, dark: false },
+    { id: "S3", name: "Interior Wiring Harness", base_cycle_time: 57.5, variance_std: 4.0, dark: true },
+    { id: "S4", name: "Chassis Marriage", base_cycle_time: 56.0, variance_std: 2.5, dark: false },
+    { id: "S5", name: "Trim & Finish", base_cycle_time: 57.0, variance_std: 4.0, dark: true },
+    { id: "S6", name: "Glazing & Seals", base_cycle_time: 56.0, variance_std: 2.5, dark: false },
+    { id: "S7", name: "Fluid Fill & Electrical", base_cycle_time: 55.5, variance_std: 2.5, dark: false },
+    { id: "S8", name: "End-of-Line Test", base_cycle_time: 57.0, variance_std: 3.0, dark: false },
   ],
 };
 

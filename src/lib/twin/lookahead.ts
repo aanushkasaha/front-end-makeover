@@ -93,7 +93,7 @@ export class LookaheadShadowTwin {
     return {
       lookahead_horizon_mins: round(this.lookaheadHorizonSeconds / 60.0, 1),
       total_forecasted_disruptions: forecasted.length,
-      earliest_lead_time_mins: forecasted.length > 0 ? forecasted[0].lead_time_minutes : null,
+      earliest_lead_time_mins: forecasted.length > 0 ? forecasted[0]!.lead_time_minutes : null,
       disruptions_list: forecasted,
       timeline_samples: timelineSamples,
       shadow_event_log: shadowEvents,

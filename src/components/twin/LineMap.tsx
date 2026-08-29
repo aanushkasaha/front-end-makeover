@@ -41,7 +41,7 @@ export function LineMap({
           const style = healthStyles[st.health];
           const isRoot = rootStationId === st.id;
           const bufferName = `B${index + 1}`;
-          const bufferLevel = snapshot.buffer_levels[bufferName];
+          const bufferLevel = snapshot.buffer_levels[bufferName] ?? 0;
           const capacity = snapshot.buffer_capacity;
 
           return (

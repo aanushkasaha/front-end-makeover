@@ -111,7 +111,7 @@ export class PrescriptiveDecisionEngine {
         a.total_blocked_minutes - b.total_blocked_minutes ||
         b.completed_vehicles - a.completed_vehicles,
     );
-    const winner = ranked[0];
+    const winner = ranked[0]!;
 
     const downtimePrevented = round(
       baseline.total_blocked_minutes - winner.total_blocked_minutes,

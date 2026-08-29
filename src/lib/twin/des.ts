@@ -64,12 +64,12 @@ export class Environment {
     if (this.queue.length === 0) return null;
     let bestIndex = 0;
     for (let i = 1; i < this.queue.length; i++) {
-      const a = this.queue[i];
-      const b = this.queue[bestIndex];
+      const a = this.queue[i]!;
+      const b = this.queue[bestIndex]!;
       if (a.time < b.time || (a.time === b.time && a.seq < b.seq)) bestIndex = i;
     }
     const [item] = this.queue.splice(bestIndex, 1);
-    return item;
+    return item ?? null;
   }
 
   run(until: number) {
@@ -78,7 +78,7 @@ export class Environment {
     for (;;) {
       if (++guard > 2_000_000) break;
       if (this.queue.length === 0) break;
-      let earliest = this.queue[0];
+      let earliest = this.queue[0]!;
       for (const item of this.queue) {
         if (item.time < earliest.time || (item.time === earliest.time && item.seq < earliest.seq)) {
           earliest = item;

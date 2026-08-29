@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConsoleRouteImport } from './routes/_console'
+import { Route as ConsoleLeadershipRouteImport } from './routes/_console.leadership'
 import { Route as ConsolePlantManagerRouteImport } from './routes/_console.plant-manager'
 import { Route as ConsoleSupervisorRouteImport } from './routes/_console.supervisor'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const ConsoleRoute = ConsoleRouteImport.update({
   id: '/_console',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ConsoleLeadershipRoute = ConsoleLeadershipRouteImport.update({
+  id: '/leadership',
+  path: '/leadership',
+  getParentRoute: () => ConsoleRoute,
 } as any)
 const ConsolePlantManagerRoute = ConsolePlantManagerRouteImport.update({
   id: '/plant-manager',
@@ -36,11 +42,13 @@ const ConsoleSupervisorRoute = ConsoleSupervisorRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/leadership': typeof ConsoleLeadershipRoute
   '/plant-manager': typeof ConsolePlantManagerRoute
   '/supervisor': typeof ConsoleSupervisorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/leadership': typeof ConsoleLeadershipRoute
   '/plant-manager': typeof ConsolePlantManagerRoute
   '/supervisor': typeof ConsoleSupervisorRoute
 }
@@ -48,18 +56,20 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_console': typeof ConsoleRouteWithChildren
+  '/_console/leadership': typeof ConsoleLeadershipRoute
   '/_console/plant-manager': typeof ConsolePlantManagerRoute
   '/_console/supervisor': typeof ConsoleSupervisorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/plant-manager' | '/supervisor'
+  fullPaths: '/' | '/leadership' | '/plant-manager' | '/supervisor'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/plant-manager' | '/supervisor'
+  to: '/' | '/leadership' | '/plant-manager' | '/supervisor'
   id:
     | '__root__'
     | '/'
     | '/_console'
+    | '/_console/leadership'
     | '/_console/plant-manager'
     | '/_console/supervisor'
   fileRoutesById: FileRoutesById
@@ -85,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsoleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_console/leadership': {
+      id: '/_console/leadership'
+      path: '/leadership'
+      fullPath: '/leadership'
+      preLoaderRoute: typeof ConsoleLeadershipRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
     '/_console/plant-manager': {
       id: '/_console/plant-manager'
       path: '/plant-manager'
@@ -103,11 +120,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface ConsoleRouteChildren {
+  ConsoleLeadershipRoute: typeof ConsoleLeadershipRoute
   ConsolePlantManagerRoute: typeof ConsolePlantManagerRoute
   ConsoleSupervisorRoute: typeof ConsoleSupervisorRoute
 }
 
 const ConsoleRouteChildren: ConsoleRouteChildren = {
+  ConsoleLeadershipRoute: ConsoleLeadershipRoute,
   ConsolePlantManagerRoute: ConsolePlantManagerRoute,
   ConsoleSupervisorRoute: ConsoleSupervisorRoute,
 }

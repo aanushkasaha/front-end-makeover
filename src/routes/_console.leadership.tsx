@@ -80,8 +80,7 @@ function LeadershipView() {
         <StatBlock label="Annualised impact" value={`$${fmt(annualised)}`} tone="nominal" />
         <StatBlock
           label="Warning lead time"
-          value={kpis.lead_time_mins ?? "—"}
-          unit={kpis.lead_time_mins ? "min" : undefined}
+          value={kpis.lead_time_mins ? `${kpis.lead_time_mins} min` : "—"}
           tone="accent"
         />
       </div>
